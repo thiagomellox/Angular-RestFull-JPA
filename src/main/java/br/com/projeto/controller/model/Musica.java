@@ -45,7 +45,7 @@ public class Musica {
 		
 		setCodigo(entity.getCodigoMusica());
 		setNome(entity.getNome());
-		setDuracao(mascaraHora(entity.getDuracao()));
+		setDuracao(entity.getDuracao());
 		setGenero(entity.getGenero());
 		setArtista(new Artista(entity.getArtista()));
 	}

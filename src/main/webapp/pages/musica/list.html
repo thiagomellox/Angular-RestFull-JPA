@@ -45,7 +45,7 @@
 					<tr ng-repeat="item in list">
 						<td>{{item.nome}}</td>
 						<td>{{item.artista.nomeArtistico}}</td>
-						<td>{{item.duracao}}</td>
+						<td mask-data data="item.duracao"></td>
 						<td>{{item.genero}}</td>
 						<td class="button-table"><i class="fa fa-times-circle" title="Remover" ng-click="remover(item)" tooltip-placement="top" uib-tooltip="Remover"></i></td>
 					</tr>
