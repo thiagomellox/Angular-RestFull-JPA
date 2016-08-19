@@ -1,6 +1,6 @@
 var webAppModule = angular.module('webApp');
 
-webAppModule.controller('ArtistaListController', function ($scope, $rootScope, WebServiceX, $state, $uibModal, alertService) {
+webAppModule.controller('ArtistaListController', function ($scope, $rootScope, WebServiceX, $state, $uibModal, AlertService) {
     $scope.list = {}; 
     $scope.pesquisa = {pesquisa:''};
     
@@ -12,7 +12,7 @@ webAppModule.controller('ArtistaListController', function ($scope, $rootScope, W
 			$scope.$apply();
       	}, function(xhr, status, err) {
       		console.log(err);
-      		alertService.add("danger", "Erro : " + err);
+      		AlertService.add("danger", "Erro : " + err);
       	});        
     };
     
@@ -36,11 +36,11 @@ webAppModule.controller('ArtistaListController', function ($scope, $rootScope, W
     	modalInstance.result.then(function(selectedItem) {
 			WebServiceX.deleta("rest/artista/remover", JSON.stringify(artista))
 			.then(function(data) {
-				alertService.add(data.status, data.msg);
+				AlertService.add(data.status, data.msg);
 				$scope.buscar();
 			}, function(xhr, status, err) {
 				console.log(err);
-				alertService.add("danger", "Erro : " + err);
+				AlertService.add("danger", "Erro : " + err);
 			});
 		}, function() {
 			// no
@@ -58,7 +58,7 @@ webAppModule.controller('ArtistaListController', function ($scope, $rootScope, W
     
 });
 
-webAppModule.controller('ArtistaIncluirController', function ($scope, $rootScope, WebServiceX, $state, alertService) {
+webAppModule.controller('ArtistaIncluirController', function ($scope, $rootScope, WebServiceX, $state, AlertService) {
 	$scope.entregadores = [];
 	
 	
@@ -66,14 +66,14 @@ webAppModule.controller('ArtistaIncluirController', function ($scope, $rootScope
     	if($scope.artista != undefined){
 	    	WebServiceX.post("rest/artista/salvar", JSON.stringify($scope.artista))
 	    	.then(function(data) {
-	    		alertService.add(data.status, data.msg);
+	    		AlertService.add(data.status, data.msg);
 	    		$state.go("list_artista");  
 	    	}, function(xhr, status, err) {
 	    		console.log(err);
-	    		alertService.add("danger", "Erro : " + err);
+	    		AlertService.add("danger", "Erro : " + err);
 	    	});
 	    }else{
-	    	alertService.add("info", "Preencha os campos");
+	    	AlertService.add("info", "Preencha os campos");
 	    }
     };
 	
@@ -86,7 +86,7 @@ webAppModule.controller('ArtistaIncluirController', function ($scope, $rootScope
 });
 
 
-webAppModule.controller('MusicaListController', function ($scope, $rootScope, WebServiceX, $state, $uibModal, alertService) {
+webAppModule.controller('MusicaListController', function ($scope, $rootScope, WebServiceX, $state, $uibModal, AlertService) {
 	$scope.list = {};   
 	$scope.pesquisa = {pesquisa:''};
 	
@@ -98,7 +98,7 @@ webAppModule.controller('MusicaListController', function ($scope, $rootScope, We
 				$scope.$apply();
 			}, function(xhr, status, err) {
 				console.log(err);
-				alertService.add("danger", "Erro : " + err);
+				AlertService.add("danger", "Erro : " + err);
 			});        
 	};
 	
@@ -122,11 +122,11 @@ webAppModule.controller('MusicaListController', function ($scope, $rootScope, We
     	modalInstance.result.then(function(selectedItem) {
     		WebServiceX.deleta("rest/musica/remover", JSON.stringify(musica))
 	      	.then(function(data) {
-	      		alertService.add(data.status, data.msg);
+	      		AlertService.add(data.status, data.msg);
 	      		$scope.buscar();
 	      	}, function(xhr, status, err) {
 	      		console.log(err);
-	      		alertService.add("danger", "Erro : " + err);
+	      		AlertService.add("danger", "Erro : " + err);
 	      	}); 
 		}, function() {
 			// no
@@ -146,7 +146,7 @@ webAppModule.controller('MusicaListController', function ($scope, $rootScope, We
 			$scope.$apply();
       	}, function(xhr, status, err) {
       		console.log(err);
-      		alertService.add("danger", "Erro : " + err);
+      		AlertService.add("danger", "Erro : " + err);
       	});        
     };
 	
@@ -155,7 +155,7 @@ webAppModule.controller('MusicaListController', function ($scope, $rootScope, We
 	
 });
 
-webAppModule.controller('MusicaIncluirController', function ($scope, $rootScope, WebServiceX, $state, alertService) {
+webAppModule.controller('MusicaIncluirController', function ($scope, $rootScope, WebServiceX, $state, AlertService) {
 	$scope.musica = {};
 	
 	$scope.carregarArtista = function() {
@@ -165,7 +165,7 @@ webAppModule.controller('MusicaIncluirController', function ($scope, $rootScope,
 			$scope.$apply();
       	}, function(xhr, status, err) {
       		console.log(err);
-      		alertService.add("danger", "Erro : " + err);
+      		AlertService.add("danger", "Erro : " + err);
       	});        
     };
     
@@ -174,14 +174,14 @@ webAppModule.controller('MusicaIncluirController', function ($scope, $rootScope,
 		if($scope.musica != undefined){
 			WebServiceX.post("rest/musica/salvar", JSON.stringify($scope.musica))
 			.then(function(data) {
-				alertService.add(data.status, data.msg);
+				AlertService.add(data.status, data.msg);
 				$state.go("list_musica");  
 			}, function(xhr, status, err) {
 				console.log(err);
-				alertService.add("danger", "Erro : " + err);
+				AlertService.add("danger", "Erro : " + err);
 			});
 		}else{
-			alertService.add("info", "Preencha os campos");
+			AlertService.add("info", "Preencha os campos");
 		}
 	};
 	
@@ -210,12 +210,12 @@ webAppModule.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance
 	});
 
 
-webAppModule.controller('AlertCtrl', function($rootScope, $location, alertService) {
+webAppModule.controller('AlertCtrl', function($rootScope, $location, AlertService) {
 	$rootScope.changeView = function(view) {
 		$location.path(view);
 	}
 
-	$rootScope.closeAlert = alertService.closeAlert;
+	$rootScope.closeAlert = AlertService.closeAlert;
 
 });
 

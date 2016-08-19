@@ -1,6 +1,6 @@
 var $stateProviderRef = null;
 
-angular.module("webApp", ["ui.router", "hs.WebService", 'ui.mask','ui.bootstrap'])
+angular.module("webApp", ["ui.router", "webApp.service", 'ui.mask','ui.bootstrap'])
     .config(function ($stateProvider, $urlRouterProvider) {
     	// For any unmatched url, send to /index
 		  $urlRouterProvider.otherwise("/listartista");

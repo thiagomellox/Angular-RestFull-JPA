@@ -16,7 +16,7 @@
 		<!-- Angular Modules -->
     	<script src="./js/app.js"></script>
     	<script src="./js/diretives.js"></script>
-    	<script src="./js/webservice.js"></script>
+    	<script src="./js/service.js"></script>
     	<script src="./js/controllers.js"></script>
     	
     	
@@ -69,10 +69,10 @@
 	        <div id="page-wrapper">
 	        	
 
-				<div ng-controller="AlertCtrl" style="padding-top: 20px;">
+<!-- 				<div ng-controller="AlertCtrl" style="padding-top: 20px;"> -->
 				
-				  <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</div>
-				</div>
+<!-- 				  <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)" dismiss-on-timeout="3000">{{alert.msg}}</div> -->
+<!-- 				</div> -->
 
 	        	
 	  			<div data-ui-view style="padding-top: 20px;">
